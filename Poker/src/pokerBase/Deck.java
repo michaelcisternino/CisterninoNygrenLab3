@@ -38,6 +38,7 @@ public class Deck {
 		Shuffle();
 	}
 	
+	
 	/** creates a deck with jokers
 	 * @param NumJokers
 	 */
@@ -52,7 +53,23 @@ public class Deck {
 	}
 	
 	
+	public Deck(int NumJokers, ArrayList<Card> Wilds) {
 
+		this(NumJokers);
+		
+		for (Card card : deck)
+		{
+			for (Card Wild: Wilds)
+			{
+				if ((card.getSuit() == Wild.getSuit()) &&
+						(card.getRank() == Wild.getRank()))
+						{
+							card.setWild();
+						}
+			}
+		}
+		Shuffle();
+	}
 	
 	private void Shuffle()
 	{
